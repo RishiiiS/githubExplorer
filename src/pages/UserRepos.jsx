@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useMemo } from 'react';
 import { useParams } from 'react-router-dom';
+import { Book, Star, Users } from 'lucide-react';
 import FilterBar from '../components/repo/FilterBar';
 import RepoList from '../components/repo/RepoList';
+import UserProfileSidebar from '../components/user/UserProfileSidebar';
 import { getUserRepos, getUserProfile } from '../services/github';
 import './UserRepos.css';
 
@@ -63,36 +65,46 @@ export default function UserRepos() {
 
   return (
     <div className="user-repos-page">
-      <div className="user-repos-container">
-        <section className="user-profile-header">
-          {userProfile && (
-            <img 
-              src={userProfile.avatar_url} 
-              alt={`${userProfile.login} avatar`} 
-              className="user-avatar-large"
-            />
-          )}
-          <div className="user-header-info">
-            <h1 className="user-name">{userProfile?.name || username}</h1>
-            <h2 className="user-login">{username}</h2>
-          </div>
-        </section>
-
-        <FilterBar 
-          languages={availableLanguages}
-          selectedLanguage={selectedLanguage}
-          onLanguageChange={setSelectedLanguage}
-          sortBy={sortBy}
-          onSortChange={setSortBy}
+      <div className="user-repos-layout">
+        
+        <UserProfileSidebar 
+          userProfile={userProfile} 
+          isLoading={isLoading} 
         />
 
-        <section className="repos-main-section">
-          <RepoList 
-            repos={filteredAndSortedRepos} 
-            isLoading={isLoading} 
-            error={error} 
+        <main className="user-repos-main">
+          <nav className="repo-nav-tabs">
+            <div className="nav-tab active">
+              <Book size={16} />
+              Repositories 
+              <span className="tab-badge">{userProfile?.public_repos || 0}</span>
+            </div>
+            <div className="nav-tab">
+              <Star size={16} />
+              Stars
+            </div>
+            <div className="nav-tab">
+              <Users size={16} />
+              Followers
+            </div>
+          </nav>
+
+          <FilterBar 
+            languages={availableLanguages}
+            selectedLanguage={selectedLanguage}
+            onLanguageChange={setSelectedLanguage}
+            sortBy={sortBy}
+            onSortChange={setSortBy}
           />
-        </section>
+
+          <section className="repos-main-section">
+            <RepoList 
+              repos={filteredAndSortedRepos} 
+              isLoading={isLoading} 
+              error={error} 
+            />
+          </section>
+        </main>
       </div>
     </div>
   );

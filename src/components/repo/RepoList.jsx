@@ -1,5 +1,6 @@
 import React from 'react';
 import RepoItem from './RepoItem';
+import './RepoList.css';
 
 export default function RepoList({ repos, isLoading, error }) {
   if (error) {
@@ -12,10 +13,11 @@ export default function RepoList({ repos, isLoading, error }) {
 
   if (isLoading) {
     return (
-      <div className="repo-list-state loading-state">
-        <div className="skeleton-row"></div>
-        <div className="skeleton-row"></div>
-        <div className="skeleton-row"></div>
+      <div className="repo-grid">
+        <div className="skeleton-row" style={{ height: '140px' }}></div>
+        <div className="skeleton-row" style={{ height: '140px' }}></div>
+        <div className="skeleton-row" style={{ height: '140px' }}></div>
+        <div className="skeleton-row" style={{ height: '140px' }}></div>
       </div>
     );
   }
@@ -29,7 +31,7 @@ export default function RepoList({ repos, isLoading, error }) {
   }
 
   return (
-    <div className="repo-list">
+    <div className="repo-grid">
       {repos.map(repo => (
         <RepoItem key={repo.id} repo={repo} />
       ))}
