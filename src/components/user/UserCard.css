@@ -1,0 +1,118 @@
+.user-card {
+  border: 1px solid var(--border-color, #30363d);
+  border-radius: 8px;
+  padding: 20px;
+  background-color: var(--bg-primary, #0d1117);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.user-card:hover {
+  border-color: var(--accent-muted, rgba(88, 166, 255, 0.4));
+  transform: translateY(-2px);
+}
+
+.user-card-header {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.user-card-avatar {
+  width: 56px;
+  height: 56px;
+  border-radius: 6px; /* Slightly squarish like the image */
+  object-fit: cover;
+  border: 1px solid rgba(240, 246, 252, 0.1);
+}
+
+.user-card-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.user-card-name {
+  margin: 0;
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--text-main, #c9d1d9);
+  line-height: 1.2;
+}
+
+.user-card-login {
+  margin: 2px 0 4px 0;
+  font-size: 0.875rem;
+  color: var(--text-muted, #8b949e);
+  line-height: 1.2;
+}
+
+.user-card-company {
+  margin: 0;
+  font-size: 0.875rem;
+  color: var(--text-muted, #8b949e);
+}
+
+.user-card-stats {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 16px;
+  font-size: 0.875rem;
+  color: var(--text-main, #c9d1d9);
+  font-weight: 500;
+}
+
+.stat-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stat-icon {
+  color: var(--text-muted, #8b949e);
+}
+
+.user-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: auto; /* Pushes the button to the bottom */
+  padding-bottom: 24px;
+}
+
+.skill-tag {
+  background-color: var(--bg-secondary, #21262d);
+  border: 1px solid var(--border-color, #30363d);
+  color: var(--text-main, #c9d1d9);
+  font-size: 0.65rem;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.user-card-action {
+  margin-top: auto;
+}
+
+.view-profile-btn {
+  display: block;
+  width: 100%;
+  text-align: center;
+  background-color: var(--bg-secondary, #21262d);
+  border: 1px solid var(--border-color, #30363d);
+  color: var(--text-main, #c9d1d9);
+  padding: 8px 16px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 0.875rem;
+  font-weight: 500;
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+.view-profile-btn:hover {
+  background-color: var(--bg-hover, #30363d);
+  border-color: var(--text-muted, #8b949e);
+}
