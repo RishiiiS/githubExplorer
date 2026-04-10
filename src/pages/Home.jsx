@@ -17,7 +17,7 @@ export default function Home() {
   return (
     <div className="home-container">
       <div className="home-content">
-        <h1 className="home-title">Find your next collaborator.</h1>
+        <h1 className="home-title">Explore developers and their work</h1>
         
         <form className="search-wrapper" onSubmit={handleSearch}>
           <Search className="search-icon" size={20} />
