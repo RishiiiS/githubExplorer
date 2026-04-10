@@ -1,5 +1,6 @@
-import React from 'react';
-import { Star, GitFork } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Star, GitFork, Bookmark } from 'lucide-react';
+import { isBookmarked, toggleBookmark } from '../../utils/bookmarks';
 import './RepoItem.css';
 
 const languageColors = {
@@ -13,7 +14,19 @@ const languageColors = {
   CSS: '#563d7c',
 };
 
-export default function RepoItem({ repo }) {
+export default function RepoItem({ repo, showOwner }) {
+  const [bookmarked, setBookmarked] = useState(false);
+
+  useEffect(() => {
+    setBookmarked(isBookmarked(repo.id));
+  }, [repo.id]);
+
+  const handleBookmark = (e) => {
+    e.preventDefault();
+    const newState = toggleBookmark(repo);
+    setBookmarked(newState);
+  };
+
   const langColor = languageColors[repo.language] || '#8b949e';
 
   return (
@@ -24,10 +37,39 @@ export default function RepoItem({ repo }) {
           className="repo-name" 
           target="_blank" 
           rel="noopener noreferrer"
+          style={{ display: 'flex', alignItems: 'center', gap: '8px' }}
         >
-          {repo.name}
+          {showOwner && repo.full_name ? (
+            <>
+              <img 
+                src={repo.owner?.avatar_url || `https://github.com/${repo.full_name.split('/')[0]}.png`} 
+                alt={repo.owner?.login || repo.full_name.split('/')[0]} 
+                style={{ width: '24px', height: '24px', borderRadius: '50%', objectFit: 'cover' }} 
+              />
+              <span>
+                <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}>{repo.full_name.split('/')[0]} / </span>
+                {repo.name}
+              </span>
+            </>
+          ) : (
+            repo.name
+          )}
         </a>
-        <span className="repo-badge">{repo.private ? 'Private' : 'Public'}</span>
+        <div className="repo-header-actions">
+          <span className="repo-badge">{repo.private ? 'Private' : 'Public'}</span>
+          <button 
+            className="bookmark-btn" 
+            onClick={handleBookmark} 
+            title={bookmarked ? "Remove bookmark" : "Bookmark repository"}
+            aria-label="Toggle Bookmark"
+          >
+            <Bookmark 
+              size={18} 
+              fill={bookmarked ? 'currentColor' : 'none'} 
+              color={bookmarked ? 'var(--accent-color)' : 'var(--text-muted)'} 
+            />
+          </button>
+        </div>
       </div>
       
       {repo.description && (

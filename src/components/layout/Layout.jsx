@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Moon, Sun, User } from 'lucide-react';
+import { Moon, Sun, User, Bookmark } from 'lucide-react';
 import './Layout.css';
 import { Link } from 'react-router-dom';
 
@@ -31,6 +31,9 @@ export default function Layout({ children }) {
           </Link>
         </div>
         <div className="header-right">
+          <Link to="/bookmarks" className="icon-btn" aria-label="Saved Bookmarks">
+            <Bookmark size={18} />
+          </Link>
           <button className="icon-btn" aria-label="Toggle Theme" onClick={toggleTheme}>
             {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
           </button>

@@ -2,7 +2,7 @@ import React from 'react';
 import RepoItem from './RepoItem';
 import './RepoList.css';
 
-export default function RepoList({ repos, isLoading, error }) {
+export default function RepoList({ repos, isLoading, error, showOwner = false }) {
   if (error) {
     return (
       <div className="repo-list-state error-state">
@@ -33,7 +33,7 @@ export default function RepoList({ repos, isLoading, error }) {
   return (
     <div className="repo-grid">
       {repos.map(repo => (
-        <RepoItem key={repo.id} repo={repo} />
+        <RepoItem key={repo.id} repo={repo} showOwner={showOwner} />
       ))}
     </div>
   );

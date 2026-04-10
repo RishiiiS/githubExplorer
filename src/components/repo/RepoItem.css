@@ -22,6 +22,28 @@
   gap: 8px;
 }
 
+.repo-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-left: auto;
+}
+
+.bookmark-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 4px;
+  border-radius: 4px;
+  color: var(--text-muted, #8b949e);
+  transition: all 0.2s ease;
+}
+
+.bookmark-btn:hover {
+  background-color: var(--bg-hover, #f3f4f6);
+  color: var(--text-main, #111827);
+}
+
 .repo-name {
   font-size: 1.25rem;
   font-weight: 600;
