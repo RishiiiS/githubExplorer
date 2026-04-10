@@ -49,6 +49,8 @@
   font-weight: 600;
   color: var(--accent-color, #58a6ff);
   text-decoration: none;
+  word-break: break-word;
+  overflow-wrap: anywhere;
 }
 
 .repo-name:hover {
