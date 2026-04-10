@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, Command, Terminal, Blocks, Zap } from 'lucide-react';
+import { Search, Terminal, Blocks, Zap } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import './Home.css';
 
@@ -28,10 +28,7 @@ export default function Home() {
             value={query}
             onChange={(e) => setQuery(e.target.value)}
           />
-          <div className="search-shortcut">
-            <Command size={12} />
-            <span>K</span>
-          </div>
+
         </form>
 
         <div className="suggested-searches-container">

@@ -26,12 +26,7 @@ export default function Layout({ children }) {
         <div className="footer-left">
           &copy; {new Date().getFullYear()} GitHub Explorer
         </div>
-        <div className="footer-right">
-          <a href="#">Docs</a>
-          <a href="#">API</a>
-          <a href="#">Status</a>
-          <a href="#">Privacy</a>
-        </div>
+
       </footer>
     </div>
   );
