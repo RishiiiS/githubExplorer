@@ -1,9 +1,24 @@
-import React from 'react';
-import { Moon, User } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Moon, Sun, User } from 'lucide-react';
 import './Layout.css';
 import { Link } from 'react-router-dom';
 
 export default function Layout({ children }) {
+  const [theme, setTheme] = useState('light');
+
+  useEffect(() => {
+    const savedTheme = localStorage.getItem('app-theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+    setTheme(savedTheme);
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  }, []);
+
+  const toggleTheme = () => {
+    const newTheme = theme === 'light' ? 'dark' : 'light';
+    setTheme(newTheme);
+    localStorage.setItem('app-theme', newTheme);
+    document.documentElement.setAttribute('data-theme', newTheme);
+  };
+
   return (
     <div className="layout">
       <header className="header">
@@ -16,7 +31,9 @@ export default function Layout({ children }) {
           </Link>
         </div>
         <div className="header-right">
-          <button className="icon-btn" aria-label="Toggle Theme"><Moon size={18} /></button>
+          <button className="icon-btn" aria-label="Toggle Theme" onClick={toggleTheme}>
+            {theme === 'light' ? <Moon size={18} /> : <Sun size={18} />}
+          </button>
           <div className="user-avatar" aria-label="User Profile">
             <User size={18} />
           </div>
