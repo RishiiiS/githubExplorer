@@ -6,13 +6,14 @@
 }
 
 .user-repos-layout {
-  display: grid;
-  grid-template-columns: 280px 1fr;
-  gap: 32px;
+  display: flex;
+  align-items: flex-start;
+  gap: 40px;
 }
 
 /* Sidebar Profile */
 .user-profile-sidebar {
+  flex: 0 0 280px;
   display: flex;
   flex-direction: column;
   gap: 16px;
@@ -127,9 +128,12 @@
 
 /* Main Content */
 .user-repos-main {
+  flex: 1;
   display: flex;
   flex-direction: column;
   min-width: 0; /* Prevents flex items from overflowing */
+  border-left: 1px solid var(--border-color, #30363d);
+  padding-left: 40px;
 }
 
 .repo-nav-tabs {
@@ -212,7 +216,18 @@
 /* Mobile Adjustments */
 @media (max-width: 768px) {
   .user-repos-layout {
-    grid-template-columns: 1fr;
+    flex-direction: column;
+    gap: 32px;
+  }
+  
+  .user-repos-main {
+    border-left: none;
+    padding-left: 0;
+  }
+  
+  .user-profile-sidebar {
+    flex: none;
+    width: 100%;
   }
   
   .user-avatar-large {

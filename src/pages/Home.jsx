@@ -7,6 +7,10 @@ export default function Home() {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
 
+  const handleSuggestedSearch = (suggestion) => {
+    navigate(`/search?q=${encodeURIComponent(suggestion)}`);
+  };
+
   const handleSearch = (e) => {
     e.preventDefault();
     if (query.trim()) {
@@ -34,10 +38,10 @@ export default function Home() {
         <div className="suggested-searches-container">
           <p className="suggested-title">SUGGESTED SEARCHES</p>
           <div className="suggested-tags">
-            <span className="suggested-tag">React Architects</span>
-            <span className="suggested-tag">Rust Engineers in Berlin</span>
-            <span className="suggested-tag">Machine Learning Leads</span>
-            <span className="suggested-tag">Open Source Contributors</span>
+            <span className="suggested-tag" onClick={() => handleSuggestedSearch('React Architects')} style={{ cursor: 'pointer' }}>React Architects</span>
+            <span className="suggested-tag" onClick={() => handleSuggestedSearch('Rust Engineers in Berlin')} style={{ cursor: 'pointer' }}>Rust Engineers in Berlin</span>
+            <span className="suggested-tag" onClick={() => handleSuggestedSearch('Machine Learning Leads')} style={{ cursor: 'pointer' }}>Machine Learning Leads</span>
+            <span className="suggested-tag" onClick={() => handleSuggestedSearch('Open Source Contributors')} style={{ cursor: 'pointer' }}>Open Source Contributors</span>
           </div>
         </div>
       </div>
