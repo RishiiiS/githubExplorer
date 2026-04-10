@@ -8,7 +8,6 @@
   gap: 40px;
 }
 
-/* Sidebar Profile */
 .user-profile-sidebar {
   flex: 0 0 280px;
   display: flex;
@@ -123,12 +122,11 @@
   text-decoration: underline;
 }
 
-/* Main Content */
 .user-repos-main {
   flex: 1;
   display: flex;
   flex-direction: column;
-  min-width: 0; /* Prevents flex items from overflowing */
+  min-width: 0;
   border-left: 1px solid var(--border-color, #30363d);
   padding-left: 40px;
 }
@@ -161,7 +159,7 @@
 .nav-tab.active {
   color: var(--text-main, #c9d1d9);
   font-weight: 600;
-  border-bottom-color: #f78166; /* GitHub-style active tab color */
+  border-bottom-color: #f78166;
 }
 
 .tab-badge {
@@ -173,7 +171,6 @@
   font-weight: 500;
 }
 
-/* States */
 .repo-list-state {
   padding: 48px 0;
   text-align: center;
@@ -185,7 +182,6 @@
   color: #f85149;
 }
 
-/* Skeletons for Loading */
 .loading-state {
   display: flex;
   flex-direction: column;
@@ -210,7 +206,6 @@
   }
 }
 
-/* Mobile Adjustments */
 @media (max-width: 768px) {
   .user-repos-layout {
     flex-direction: column;

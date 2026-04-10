@@ -7,12 +7,9 @@ import './Bookmarks.css';
 export default function Bookmarks() {
   const [bookmarkedRepos, setBookmarkedRepos] = useState([]);
 
-  // Fetch bookmarks on mount. 
-  // We can also poll localStorage if we want multi-tab sync, but standard mount is fine for simple SPA
   useEffect(() => {
     setBookmarkedRepos(getBookmarks());
     
-    // Optional: listen to storage events to auto-update if un-bookmarked from another tab
     const handleStorage = () => {
       setBookmarkedRepos(getBookmarks());
     };

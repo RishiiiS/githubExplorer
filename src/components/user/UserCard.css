@@ -22,7 +22,7 @@
 .user-card-avatar {
   width: 56px;
   height: 56px;
-  border-radius: 6px; /* Slightly squarish like the image */
+  border-radius: 6px;
   object-fit: cover;
   border: 1px solid rgba(240, 246, 252, 0.1);
 }
@@ -77,7 +77,7 @@
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
-  margin-bottom: auto; /* Pushes the button to the bottom */
+  margin-bottom: auto;
   padding-bottom: 24px;
 }
 

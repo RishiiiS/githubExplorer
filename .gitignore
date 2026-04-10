@@ -30,3 +30,6 @@ dist-ssr/
 
 # OS Generated Files (macOS)
 .DS_Store
+
+# Vercel deployment artifacts
+.vercel
